@@ -28,6 +28,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
+  console.log("rq.body", req.body)
   const user = await Users.findBy({ username }).first();
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = signToken(user)
